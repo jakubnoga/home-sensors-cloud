@@ -20,9 +20,6 @@ import lombok.Data;
 @JsonIgnoreProperties({"sensor"})
 public class Measurement {
    @Id Integer id;
-
-   @Column(name = "sensor_id")
-   Integer sensorId;
    Integer value;
 
    @ManyToOne(optional = false, fetch = FetchType.LAZY)
