@@ -1,0 +1,30 @@
+@import '../../palette';
+
+.hsp-places-menu-item {
+
+   transition: all 100ms ease-in-out;
+   cursor: pointer;
+   border-left-width: .3em;
+   border-left-style: solid;
+   border-left-color: transparent;
+   padding: .6em;
+   
+   :not(:last-child) {
+      margin-bottom: .3em;
+   }
+
+   &:hover {
+      background: lighten($background-color, 10%);
+   }
+}
+.hsp-places-menu-item-selected {
+   border-left-color: $font-color;
+   font-weight: 600;
+}
+
+@for $level from 1 to 5 {
+   .hsp-places-menu-level-#{$level} {
+      padding-left: 2em * ($level);
+      padding-right: 2em * ($level);
+   }
+}

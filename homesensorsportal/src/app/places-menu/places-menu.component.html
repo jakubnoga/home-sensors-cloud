@@ -1,0 +1,7 @@
+<ul class='hsp-places-menu-list'>
+  <app-places-menu-item *ngFor="let place of places" 
+    [place]="place" 
+    (click)="onSelect(place)" 
+    [isSelected]="place === selectedPlace"
+  ></app-places-menu-item>
+</ul>

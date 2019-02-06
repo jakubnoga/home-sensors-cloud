@@ -1,0 +1,7 @@
+<li *ngIf="place" [ngClass]="{
+  'hsp-places-menu-item': true,
+  'hsp-places-menu-level-0': place.id == -1,
+  'hsp-places-menu-level-1': !place.parent && place.id > 0,
+  'hsp-places-menu-level-2': place.parent && place.id > 0,
+  'hsp-places-menu-item-selected': isSelected
+}">{{place.name | uppercase}}</li>

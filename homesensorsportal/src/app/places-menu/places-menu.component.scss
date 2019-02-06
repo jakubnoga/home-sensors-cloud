@@ -1,0 +1,10 @@
+@import '../../palette';
+
+:host {
+   background: $panel-color;
+}
+
+.hsp-places-menu-list {
+   list-style: none;
+   padding: 5px;
+}
