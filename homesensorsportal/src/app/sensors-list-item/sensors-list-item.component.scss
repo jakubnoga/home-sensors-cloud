@@ -1,0 +1,44 @@
+@import '../../palette';
+
+:host {
+   height: 100%;
+   width: 250px;
+
+   &:not(:first-child) {
+      margin-left: 1em;
+   }
+
+   cursor: pointer;
+}
+
+.hsp-sensor-card {
+   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.8), 0 1px 3px rgba(0, 0, 0, 1);
+   transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+   padding: 0.5em;
+   border-radius: 2px;
+   height: 100%;
+
+   display: flex;
+   flex-direction: column;
+
+   background-color: $background-color;
+
+   &:hover {
+      box-shadow: 0 3px 6px rgba(0, 0, 0, 0.8), 0 3px 6px rgba(0, 0, 0, 1);
+   }
+
+   text-transform: uppercase;
+   font-weight: 600;
+}
+
+.hsp-sensor-card-path {
+   color: $font-subtle-color;
+   font-size: 0.7em;
+   font-weight: 600;
+}
+.hsp-sensor-card-value {
+   height: 100%;
+   font-size: 4em;
+   text-align: center;
+   line-height: 1.6em;
+}

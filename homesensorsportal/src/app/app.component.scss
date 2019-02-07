@@ -1,4 +1,11 @@
 :host {
-   display: inline-flex;
+   display: inline-grid;
    height: 100%;
+   width: 100%;
+
+   grid-template-columns: 225px auto;
+   grid-template-rows: 150px auto;
+   grid-template-areas: 
+      "header main"
+      "sidebar main";
 }

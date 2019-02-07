@@ -1,4 +1,4 @@
-import { Place } from '../places/place';
+import { Place } from "../place/place";
 
 export const PLACES: Place[] = [
    {id: 1, name: 'Kobierzyńska 98', parent: null},

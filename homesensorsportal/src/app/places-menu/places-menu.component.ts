@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Place } from '../places/place';
+import { Place } from "../place/place";
 import { PLACES } from '../mocks/mock-places';
+import { PlaceService } from '../place/place.service';
 
 @Component({
   selector: 'app-places-menu',
@@ -16,10 +17,17 @@ export class PlacesMenuComponent implements OnInit {
   places: Place[] = [this.rootPlace, ...PLACES];
   selectedPlace: Place = this.rootPlace;
 
-  constructor() {
+  constructor(private placeService: PlaceService) {
+
   }
 
   ngOnInit() {
+    this.getPlaces();  
+  }
+  
+  getPlaces(): void {
+    this.placeService.getPlaces()
+      .subscribe(places => this.places = [this.rootPlace, ...places])    
   }
 
   onSelect(place: Place) {

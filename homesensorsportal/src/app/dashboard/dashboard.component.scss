@@ -1,0 +1,9 @@
+@import '../../palette.scss';
+
+:host {
+   display: inline-flex;
+   flex-direction: column;
+   width: 100%;
+
+   grid-area: main
+}

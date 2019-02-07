@@ -1,0 +1,11 @@
+@import '../../palette';
+
+:host {
+   height: 150px;
+   background-color: $panel-color;
+
+   display: inline-flex;
+   padding: 1em;
+
+   // border-bottom: 2px solid $panel-color
+}

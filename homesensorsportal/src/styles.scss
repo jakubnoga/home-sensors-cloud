@@ -1,13 +1,15 @@
 /* You can add global styles to this file, and also import other style files */
 @import url('https://fonts.googleapis.com/css?family=PT+Sans:400,400i,700,700i&subset=latin-ext');
+@import url('https://fonts.googleapis.com/css?family=Montserrat:400,600,900&subset=latin-ext');
 @import 'palette';
 
 * {
    font-size: 1.3rem;
-   font-family: 'PT Sans', sans-serif;
+   font-family: 'Montserrat', 'PT Sans', sans-serif;
    color: $font-color;
    margin: 0;
    padding: 0;
+   box-sizing: border-box;
 }
 
 html, body {

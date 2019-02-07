@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Place } from '../places/place';
+import { Place } from "../place/place";
 
 @Component({
   selector: 'app-places-menu-item',
