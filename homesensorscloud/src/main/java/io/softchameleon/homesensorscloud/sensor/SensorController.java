@@ -6,6 +6,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import io.softchameleon.homesensorscloud.measurement.Measurement;
@@ -17,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestParam;
  * SensorController
  */
 @RestController
+@RequestMapping("sensor")
 public class SensorController {
    @Autowired
    SensorRepository sensorRepository;
@@ -25,17 +27,17 @@ public class SensorController {
    MeasurementRepository measurementRepository;
 
 
-   @GetMapping(value = "/sensor/{name}", produces = "application/json; charset=UTF-8")
-   public Optional<Sensor> getSensorByName(@PathVariable String name) {
+   @GetMapping
+   public Optional<Sensor> getSensorByName(@RequestParam(name = "sensorName") String name) {
       return sensorRepository.findFirstByName(name);
    }
    
-   @GetMapping("/sensor")
+   @GetMapping("all")
    public List<Sensor> getAllSensors() {
       return sensorRepository.findAll();
    }
 
-   @GetMapping(value="/sensor/{name}/measurements")
+   @GetMapping(value="{name}/measurements")
    public List<Measurement> getMeasurementsBySensorName(@PathVariable String name) {
        return measurementRepository.findBySensorName(name);
    }

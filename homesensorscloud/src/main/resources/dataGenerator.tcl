@@ -1,8 +1,9 @@
 set dataFile [open "data.sql" w+]
 # fconfigure $dataFile -encoding utf-8
 
-puts $dataFile "INSERT INTO sensor (id, \"name\", multiplier, description, unit) VALUES(0, 'Temperature_1', 1, 'Temperatura w domu - test', '[encoding convertto utf-8 \u00B0]C');"
-puts $dataFile "INSERT INTO sensor (id, \"name\", multiplier, description, unit) VALUES(1, 'Humidity_1', 1, 'Wilgotność w domu - test', '%RH');"
+puts $dataFile "INSERT INTO device (id, mac, place) VALUES(0, '00:0A:E6:3E:FD:E1', 'Kobierzyńska 98/Salon');"
+puts $dataFile "INSERT INTO sensor (id, device_id, \"name\", multiplier, description, unit) VALUES(0, 0, 'Temperature_1', 1, 'Temperatura w domu - test', '[encoding convertto utf-8 \u00B0]C');"
+puts $dataFile "INSERT INTO sensor (id, device_id, \"name\", multiplier, description, unit) VALUES(1, 0, 'Humidity_1', 1, 'Wilgotność w domu - test', '%RH');"
 
 set offset [expr 24*60*60]
 set baseTemperature 23
