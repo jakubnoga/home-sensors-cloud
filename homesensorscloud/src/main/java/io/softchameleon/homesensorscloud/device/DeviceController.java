@@ -27,11 +27,11 @@ public class DeviceController {
    }
 
    @PutMapping
-   public Long registerDeviceByMac(@RequestParam(name = "mac") String mac, @RequestParam(name = "place") String place) {
+   public Long registerDeviceByMac(@RequestParam(name = "mac") String mac, @RequestParam(name = "place", required = false) String place) {
       if (deviceRepository.existsByMac(mac)) {
          Device device = deviceRepository.findByMac(mac);
 
-         if (!device.getPlace().equals(place)) {
+         if (place != null && !device.getPlace().equals(place)) {
             device.setPlace(place);
             device = deviceRepository.save(device);
          }

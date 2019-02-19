@@ -9,8 +9,8 @@ import org.springframework.data.repository.CrudRepository;
  * SensorRepository
  */
 
-public interface SensorRepository extends CrudRepository<Sensor, Integer> {
-   List<Sensor> findByName(String name);
+public interface SensorRepository extends CrudRepository<Sensor, Long> {
+   Optional<Sensor> findByDeviceIdAndName(Long deviceId, String name);
 
    List<Sensor> findAll();
 

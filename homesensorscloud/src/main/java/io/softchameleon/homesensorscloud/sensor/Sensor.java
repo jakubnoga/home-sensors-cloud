@@ -1,5 +1,6 @@
 package io.softchameleon.homesensorscloud.sensor;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -18,7 +19,7 @@ import lombok.Data;
 @Entity
 @Data
 public class Sensor {
-   @Id @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "sensor_seq")     
+   @Id @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "sensor_generator")     
    @SequenceGenerator(name = "sensor_generator", sequenceName = "sensor_seq", allocationSize = 1) 
    private Long id;
 

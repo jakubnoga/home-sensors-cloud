@@ -14,7 +14,7 @@ import lombok.Data;
 @Entity
 @Data
 public class Device {
-   @Id @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "device_seq")    
+   @Id @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "device_generator")    
    @SequenceGenerator(name = "device_generator", sequenceName = "device_seq", allocationSize = 1) 
    private Long id;
    private String mac;

@@ -21,10 +21,11 @@ import lombok.Data;
 @Data
 @JsonIgnoreProperties({"sensor"})
 public class Measurement {
-   @Id @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "measurement_seq")
+   @Id 
    @SequenceGenerator(name = "measurement_generator", sequenceName = "measurement_seq", allocationSize = 1) 
+   @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "measurement_generator")
    Long id;
-   Integer value;
+   Float value;
 
    @ManyToOne(optional = false, fetch = FetchType.LAZY)
    @JoinColumn(name = "sensor_id")

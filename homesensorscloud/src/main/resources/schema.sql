@@ -7,7 +7,7 @@ DROP TABLE IF EXISTS device;
 CREATE TABLE measurement (
     id bigint NOT NULL,
     sensor_id bigint NOT NULL,
-    value integer NOT NULL,
+    value numeric NOT NULL,
     "timestamp" bigint NOT NULL,
     year smallint,
     month smallint,
@@ -23,8 +23,8 @@ ALTER TABLE measurement OWNER TO postgres;
 CREATE TABLE sensor (
     id bigint NOT NULL,
     device_id bigint NOT NULL,
-    name character varying NOT NULL,
-    multiplier smallint DEFAULT 1 NOT NULL,
+    name character varying,
+    multiplier smallint DEFAULT 1,
     description character varying,
     unit character varying
 );
@@ -34,7 +34,7 @@ ALTER TABLE sensor OWNER TO postgres;
 CREATE TABLE device (
     id bigint NOT NULL,
     mac character varying NOT NULL,
-    place character varying NOT NULL
+    place character varying
 );
 
 ALTER TABLE ONLY measurement
