@@ -41,7 +41,7 @@ ALTER TABLE ONLY measurement
     ADD CONSTRAINT measurement_pk PRIMARY KEY (id);
 
 ALTER TABLE ONLY sensor
-    ADD CONSTRAINT sensor_pk PRIMARY KEY (device_id, id);
+    ADD CONSTRAINT sensor_pk PRIMARY KEY (id);
 
 ALTER TABLE ONLY device
     ADD CONSTRAINT device_pk PRIMARY KEY (id);

@@ -15,7 +15,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
  */
 @EnableWebSecurity
 @Configuration
-public class ExtraDumbInMemoryWebSecurityConfigurerAdapter extends WebSecurityConfigurerAdapter {
+public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
 
    @Bean
    public PasswordEncoder passwordEncoder() {
@@ -23,20 +23,19 @@ public class ExtraDumbInMemoryWebSecurityConfigurerAdapter extends WebSecurityCo
    }
 
    @Autowired
-   public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
-      auth.inMemoryAuthentication()
-         .withUser("wemos")
-         .password(passwordEncoder().encode("d1mini"))
-         .authorities("ROLE_DEVICE");
+   CustomUserDetailsService userDetailsService;
+
+   @Override
+   public void configure(AuthenticationManagerBuilder auth) throws Exception {
+      auth.userDetailsService(userDetailsService).passwordEncoder(passwordEncoder());
+
+      auth.inMemoryAuthentication().withUser("wemos").password(passwordEncoder().encode("d1mini"))
+            .authorities("ROLE_DEVICE");
    }
 
    @Override
    protected void configure(HttpSecurity http) throws Exception {
-      http.authorizeRequests()
-         .anyRequest()
-         .authenticated()
-         .and()
-         .httpBasic();
-
+      http.authorizeRequests().anyRequest().authenticated().and().httpBasic();
    }
+
 }

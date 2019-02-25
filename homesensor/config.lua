@@ -18,5 +18,7 @@ Config.server = "http://192.168.10.14:8080"
 Config.register_address = "/device"
 Config.measurement_address = "/measurement"
 Config.sensor_address = "/sensor"
+Config.device_place = "Kobierzyńska 98/Salon"
 Config.i2c_address = 0x45
 Config.sleep_time = 900
+Config.test = "ń"

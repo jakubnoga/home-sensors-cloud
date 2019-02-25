@@ -4,34 +4,40 @@ dofile("url-encode.lua")
 
 function try_send() 
     print("Checking wifi...")
+    print(print_measurements())
     if (wifi.sta.getip() ~= nil) then
+        check_wifi_timer:unregister()            
         deviceId = register_device()
-        print("Device id: " .. tostring(deviceId))
+        if (deviceId ~= nil) then 
+            print("Device id: " .. tostring(deviceId))
 
-        sensorId = register_sensors(deviceId)
-        print("Sensor id: " .. tostring(sensorId))
-        
-        send_measurements(deviceId, sensorId)
-        
-        check_wifi_timer:unregister()        
+            sensorId = register_sensors(deviceId)
+            print("Sensor id: " .. tostring(sensorId))
+            
+            send_measurements(deviceId, sensorId)
+        end
 
-        rawcode, reason = node.bootreason()
-        
-        print("bootreason(" .. tostring(rawcode) .. "," .. tostring(reason) .. ")")
+        -- enter_sleep_cycle()
 
-        --if (reason ~= 5) then
-        --   print("Delaying deep sleep after manual reset")
-        --    tmr.alarm(0, 900 * 1000, tmr.ALARM_SINGLE, function()
-        --       print("Going back to deep sleep (1)")
-        --        node.dsleep(Config.sleep_time * 1000000, 1)
-        --    end)
-        --else
-        --    print("Going back to deep sleep (2)")
-        --    node.dsleep(10 * 1000000, 1)
-        --end
         send_timer = tmr.create()
         send_timer:register(10000, tmr.ALARM_AUTO, function() coroutine.resume(coroutine.create(try_send)) end)
         send_timer:start()
+    end
+end
+
+function enter_sleep_cycle()
+    rawcode, reason = node.bootreason()
+    
+    print("bootreason(" .. tostring(rawcode) .. "," .. tostring(reason) .. ")")
+    if (reason ~= 5) then
+       print("Delaying deep sleep after manual reset")
+        tmr.alarm(0, 900 * 1000, tmr.ALARM_SINGLE, function()
+           print("Going back to deep sleep (1)")
+            node.dsleep(Config.sleep_time * 1000000, 1)
+        end)
+    else
+        print("Going back to deep sleep (2)")
+        node.dsleep(10 * 1000000, 1)
     end
 end
 
@@ -163,5 +169,7 @@ wifi.setmode(wifi.STATION)
 wifi.sta.config(Config.station)
 
 check_wifi_timer = tmr.create()
-check_wifi_timer:register(1000, tmr.ALARM_AUTO, function() coroutine.resume(coroutine.create(try_send)) end)
+check_wifi_timer:register(1000, tmr.ALARM_AUTO, function() 
+    coroutine.resume(coroutine.create(try_send)) 
+end)
 check_wifi_timer:start()
