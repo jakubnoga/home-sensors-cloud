@@ -9,9 +9,9 @@
 	</parent>
 	<groupId>io.softchameleon</groupId>
 	<artifactId>homesensorscloud</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
-	<name>demo</name>
-	<description>Demo project for Spring Boot</description>
+	<version>0.0.1</version>
+	<name>home-sensors-cloud</name>
+	<description>Cloud storage for home sensors measurements</description>
 	<properties>
 		<java.version>1.8</java.version>
 	</properties>
