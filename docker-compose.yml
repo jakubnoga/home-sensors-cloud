@@ -1,0 +1,22 @@
+version: '3.1'
+
+services:
+  pgdb:
+    image: postgres:9-alpine
+    environment: 
+      POSTGRES_PASSWORD: postgres
+    networks:
+      - home-sensors-network
+    restart: always
+
+  adminer:
+    image: adminer
+    restart: always
+    ports:
+      - "8080:8080" 
+    networks:
+      - home-sensors-network
+
+networks: 
+  home-sensors-network:
+    driver: "bridge"
