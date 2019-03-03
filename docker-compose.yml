@@ -1,21 +1,19 @@
 version: '3.1'
 
 services:
-  pgdb:
-    image: postgres:9-alpine
-    environment: 
-      POSTGRES_PASSWORD: postgres
+  home-sensors-cloud:
+    build: homesensorscloud
+    image: homesensorscloud
     networks:
       - home-sensors-network
-    restart: always
-
-  adminer:
-    image: adminer
-    restart: always
     ports:
-      - "8080:8080" 
-    networks:
-      - home-sensors-network
+      - "80:8080"
+    environment: 
+      DB_HOST: home-sensors-cloud-db
+      DB_PORT: 5432
+      DB_USER: postgres
+      DB_PASSWD: postgres
+      DB_INIT_MODE: always
 
 networks: 
   home-sensors-network:

@@ -1,7 +1,7 @@
-FROM maven:latest-alpine AS PACKAGE_CONTAINER
-RUN ["mvn", "clean", "package"]
+FROM maven:alpine AS PACKAGE_CONTAINER
+COPY . /home-sensors-cloud
+WORKDIR /home-sensors-cloud
 
-FROM openjdk:8-alpine AS RUN_CONTAINER
-COPY --from=PACKAGE_CONTAINER /target/home-sensors-cloud.jar /jar
-WORKDIR /jar
-RUN ["java","-jar", "home-sensors-cloud-0.0.1.jar"]
+EXPOSE 80
+
+CMD ["mvn","spring-boot:run"]

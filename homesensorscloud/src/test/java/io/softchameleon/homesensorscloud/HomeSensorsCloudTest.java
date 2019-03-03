@@ -10,7 +10,7 @@ import io.softchameleon.homesensorscloud.measurement.MeasurementController;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
-public class HomeSensorsCloudTests {
+public class HomeSensorsCloudTest {
 	@Test
 	public void contextLoads() {
 	}
